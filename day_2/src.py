@@ -50,5 +50,32 @@ def main():
     number_of_safe_reports = sum(safety_list)
     print(f'Result for part 1: {number_of_safe_reports}')
 
+    # Part 2
+    safety_list_part_2 = []
+
+    # Iterate through safety_list and re-check unsafe reports
+    for index, report_safety in enumerate(safety_list):
+        # If report was previously unsafe assume it is still unsafe and check if removing any single element results in a safe list
+        if report_safety == False:
+            updated_report_safety = False
+            report = reports[index]
+
+            for index, _ in enumerate(report):
+                modified_report = report.copy()
+                del(modified_report[index])
+
+                if check_report_safety(modified_report) == True:
+                    updated_report_safety = True
+                    break
+            
+            safety_list_part_2.append(updated_report_safety)
+
+        else:
+            safety_list_part_2.append(True)
+
+    # Calculate total number of safe reports
+    number_of_safe_reports = sum(safety_list_part_2)
+    print(f'Result for part 2: {number_of_safe_reports}')
+
 if __name__ == '__main__':
     main()
