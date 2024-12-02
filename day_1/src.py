@@ -1,7 +1,6 @@
 import os
 
 # Part 1
-
 # Identify path to puzzle input and read in data
 src_dir = os.path.dirname(os.path.realpath(__file__))
 input_data = open(os.path.join(src_dir, 'puzzle_input.txt'), 'r').readlines()
